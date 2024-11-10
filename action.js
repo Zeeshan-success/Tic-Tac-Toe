@@ -4,15 +4,8 @@ let playarea = document.querySelector("#playarea");
 let boxes = document.querySelectorAll(".box");
 let btn2 = document.querySelector("#reset");
 let winnerText = document.querySelector("#showWinner");
-let playuser = document.querySelector("#playuser");
-let compuser = document.querySelector("#Compplay");
 
-
-playuser.addEventListener("click", ()=>{
-  console.log("btn clicked");
-
-  
-  const disbalebox = () => {
+const disbalebox = () => {
   for (let box of boxes) {
     box.disabled = true;
   }
@@ -68,33 +61,26 @@ boxes.forEach((box) => {
 
 const checkWinner = () => {
   for (let arry of arr) {
-    console.log(arry[0], arry[1], arry[2]);
-
     let position1 = boxes[arry[0]].innerText;
     let position2 = boxes[arry[1]].innerText;
     let position3 = boxes[arry[2]].innerText;
 
     if (position1 != "" && position2 != "" && position3 != "") {
-      console.log(draw);
-      draw++;
       if (position1 === position2 && position2 === position3) {
-        console.log("congratulations you are Winner", position1);
-        return showWinner(position1)
+        return showWinner(position1);
       } else if (
-          boxes[0].innerText !== "" &&
-          boxes[1].innerText !== "" &&
-          boxes[2].innerText !== "" &&
-          boxes[3].innerText !== "" &&
-          boxes[4].innerText !== "" &&
-          boxes[5].innerText !== "" &&
-          boxes[6].innerText !== "" &&
-          boxes[7].innerText !== "" &&
-          boxes[8].innerText !== ""
-                ) {
-                  console.log("Game was Draw");
-                  withDraw();
-                }
-              
+        boxes[0].innerText !== "" &&
+        boxes[1].innerText !== "" &&
+        boxes[2].innerText !== "" &&
+        boxes[3].innerText !== "" &&
+        boxes[4].innerText !== "" &&
+        boxes[5].innerText !== "" &&
+        boxes[6].innerText !== "" &&
+        boxes[7].innerText !== "" &&
+        boxes[8].innerText !== ""
+      ) {
+        withDraw();
+      }
     }
   }
 };
@@ -103,6 +89,8 @@ btn1.addEventListener("click", () => {
   btn2.classList.remove("hide");
 
   for (let box of boxes) {
+    box.classList.remove("oColr");
+    box.classList.remove("xColr");
     box.classList.remove("hide");
     box.innerText = "";
     box.disabled = false;
@@ -114,8 +102,3 @@ btn2.addEventListener("click", () => {
     box.disabled = false;
   }
 });
-})
-
-let draw = 0;
-
-
